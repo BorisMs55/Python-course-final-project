@@ -1,5 +1,6 @@
 from djmoney.models.fields import MoneyField
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 # Create your models here.
@@ -15,6 +16,11 @@ class Employee(models.Model):
     manager = models.ForeignKey('self', null=True, on_delete=models.SET_NULL)
     job = models.ForeignKey('Job', null=True, on_delete=models.SET_NULL)
     department = models.ForeignKey('Department', null=True, on_delete=models.SET_NULL)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.first_name+' '+self.last_name)
+        super(Employee, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

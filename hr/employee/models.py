@@ -1,6 +1,7 @@
 from djmoney.models.fields import MoneyField
 from django.db import models
 from django.template.defaultfilters import slugify
+from datetime import datetime
 
 
 # Create your models here.
@@ -13,9 +14,11 @@ class Employee(models.Model):
     hire_date = models.DateField()
     salary = MoneyField(max_digits=14, decimal_places=2, default_currency='ILS')
     commission_pct = models.DecimalField(max_digits=4, decimal_places=2)
-    manager = models.ForeignKey('self', null=True, on_delete=models.SET_NULL)
+    manager = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
+    photo = models.ImageField(default='default.png', blank=True)
     job = models.ForeignKey('Job', null=True, on_delete=models.SET_NULL)
-    department = models.ForeignKey('Department', null=True, on_delete=models.SET_NULL)
+    department = models.ForeignKey('Department', null=True, blank=True, on_delete=models.SET_NULL)
+    #slug = models.SlugField(default=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     slug = models.SlugField()
 
     def save(self, *args, **kwargs):

@@ -18,7 +18,6 @@ class Employee(models.Model):
     photo = models.ImageField(default='default.png', blank=True)
     job = models.ForeignKey('Job', null=True, on_delete=models.SET_NULL)
     department = models.ForeignKey('Department', null=True, blank=True, on_delete=models.SET_NULL)
-    #slug = models.SlugField(default=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     slug = models.SlugField()
 
     def save(self, *args, **kwargs):

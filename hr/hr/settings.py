@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'djmoney',
     'employee',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

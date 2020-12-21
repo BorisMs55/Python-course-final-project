@@ -8,3 +8,4 @@ db.sqlite3
 /.idea
 /hr/manage.py
 /hr/employee/migrations/
+/hr/static/ckeditor/

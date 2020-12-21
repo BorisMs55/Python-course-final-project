@@ -1,6 +1,7 @@
 from djmoney.models.fields import MoneyField
 from django.db import models
 from django.template.defaultfilters import slugify
+from django_extensions.db.fields import AutoSlugField
 from datetime import datetime
 
 
@@ -18,11 +19,10 @@ class Employee(models.Model):
     photo = models.ImageField(default='default.png', blank=True)
     job = models.ForeignKey('Job', null=True, on_delete=models.SET_NULL)
     department = models.ForeignKey('Department', null=True, blank=True, on_delete=models.SET_NULL)
-    slug = models.SlugField()
+    slug = AutoSlugField(populate_from=['first_name', 'last_name'])
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.first_name+' '+self.last_name)
-        super(Employee, self).save(*args, **kwargs)
+    def slugify_function(self, content):
+        return content.replace('_', '-').lower()
 
     def __str__(self):
         return self.first_name + " " + self.last_name

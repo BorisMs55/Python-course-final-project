@@ -9,3 +9,5 @@ db.sqlite3
 /hr/manage.py
 /hr/employee/migrations/
 /hr/static/ckeditor/
+/hr/api/migrations/
+/hr/media/

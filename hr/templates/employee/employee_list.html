@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--h1>Israel politician list</--h1 -->
+<div class="employees">
+    {% for employee in employees%}
+    <!--div class=employees_photo-->
+        <!--p><img src="{{employee.photo.url}}" border="2" width="120" height="120"></p-->
+        <img src="{{employee.photo.url}}" border="2"  width="120" height="120">
+    <!--/div-->
+    <div class=content>
+        <b>{{employee.first_name}} {{employee.last_name}}</b><br>
+        place of work: {{employee.department}}<br>
+        manager: {{employee.manager}}<br>
+        position: {{employee.job}}<br>
+        hire_date: {{employee.hire_date}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

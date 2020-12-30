@@ -7,3 +7,7 @@ db.sqlite3
 .DS_Store
 /.idea
 /hr/manage.py
+/hr/employee/migrations/
+/hr/static/ckeditor/
+/hr/api/migrations/
+/hr/media/

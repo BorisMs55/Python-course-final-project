@@ -12,7 +12,8 @@
     <!--div class="container"-->
       <!--div class="row justify-content-center"-->
         <div class="col-8">
-          <button id="btnJSON" class="btn" style="float: right;">Display json</button>
+<!--          <button id="btnJSON" class="btn" style="float: right;">Display json</button>-->
+          <button onclick="location.href='{% url 'api_views' %}'" name='display_json'>Display Json</button>
           <h1 class="mt-2">Israel politicians</h1>
           <hr class="mt-0 mb-4">
           {% block content %}
